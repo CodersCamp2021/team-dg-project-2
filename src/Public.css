@@ -1,0 +1,29 @@
+.public-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.img-container {
+  height: 200px;
+  width: 200px;
+  background-color: black;
+  border-radius: 50%;
+  border: 5px solid silver;
+}
+
+.img-container img {
+  border-radius: 50%;
+}
+
+.content-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}

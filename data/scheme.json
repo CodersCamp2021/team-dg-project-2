@@ -1,0 +1,31 @@
+{
+  "name": "Phil",
+  "surname": "Json",
+  "e-mail": "p.json@gmail.com",
+  "photo": {
+    "src": "https://source.unsplash.com/random/200x200"
+  },
+  "body": {
+    "headline": "M.D",
+    "position": "Graphic Designer",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, expedita. Voluptas accusantium eius quaerat blanditiis placeat illum, odio nam nesciunt.",
+    "experience": [
+      { "id": 1, "text": "Lorem ipsum dolor sit amet" },
+      { "id": 2, "text": "Lorem ipsum dolor sit amet" },
+      { "id": 3, "text": "Lorem ipsum dolor sit amet" }
+    ],
+    "ctaText": "Click me!",
+    "ctaSrc": "medium.com"
+  },
+  "socials": [
+    { "id": "facebook", "link": "https://facebook.com" },
+    { "id": "linkedIn", "link": "https://linkedin.com" },
+    { "id": "twitter", "link": "https://twitter.com" },
+    { "id": "youtube", "link": "https://youtube.com" },
+    { "id": "github", "link": "https://github.com" },
+    { "id": "instagram", "link": "https://instagram.com" }
+  ],
+  "signature": {
+    "signatureImg": "../../public/randomSignature.png"
+  }
+}

@@ -1,0 +1,8 @@
+.panel-container {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 40vw;
+  height: 100%;
+  padding: 20px;
+  background-color: green;
+}
