@@ -1,13 +1,17 @@
 {
+  "id": 1,
   "name": "Phil",
   "surname": "Json",
-  "e-mail": "p.json@gmail.com",
+  "email": "p.json@gmail.com",
+  "theme": "dark",
   "photo": {
     "src": "https://source.unsplash.com/random/200x200"
   },
   "body": {
     "headline": "M.D",
     "position": "Graphic Designer",
+    "location": "Boston, MA",
+    "phone": "1-770-736-8031",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, expedita. Voluptas accusantium eius quaerat blanditiis placeat illum, odio nam nesciunt.",
     "experience": [
       { "id": 1, "text": "Lorem ipsum dolor sit amet" },
@@ -15,7 +19,7 @@
       { "id": 3, "text": "Lorem ipsum dolor sit amet" }
     ],
     "ctaText": "Click me!",
-    "ctaSrc": "medium.com"
+    "ctaLink": "medium.com"
   },
   "socials": [
     { "id": "facebook", "link": "https://facebook.com" },
@@ -26,6 +30,6 @@
     { "id": "instagram", "link": "https://instagram.com" }
   ],
   "signature": {
-    "signatureImg": "../../public/randomSignature.png"
+    "signatureImg": "/randomSignature.png"
   }
 }

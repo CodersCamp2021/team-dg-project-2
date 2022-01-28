@@ -1,21 +1,15 @@
-import './App.css';
+import './styles/App.css';
 
-import { Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import Public from './pages/Public';
 
 function App() {
   return (
     <div className="App">
-      <nav className="main-nav">
-        <Link to="/" className="text-link">
-          Home
-        </Link>
-        <Link to="public" className="text-link">
-          Public
-        </Link>
-      </nav>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="public" element={<Public />} />

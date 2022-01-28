@@ -1,4 +1,4 @@
-import '../Public.css';
+import '../styles/Public.css';
 
 import scheme from '../../data/scheme.json';
 
