@@ -22,12 +22,10 @@
     "ctaLink": "medium.com"
   },
   "socials": [
-    { "id": "facebook", "link": "https://facebook.com" },
     { "id": "linkedIn", "link": "https://linkedin.com" },
     { "id": "twitter", "link": "https://twitter.com" },
     { "id": "youtube", "link": "https://youtube.com" },
-    { "id": "github", "link": "https://github.com" },
-    { "id": "instagram", "link": "https://instagram.com" }
+    { "id": "github", "link": "https://github.com" }
   ],
   "signature": {
     "signatureImg": "/randomSignature.png"

@@ -14,7 +14,7 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="nav-links">
-        <Link to="public" className="text-link">
+        <Link to="sign-up" className="text-link">
           Create yours
         </Link>
         <Link to="log-in" className="text-link">

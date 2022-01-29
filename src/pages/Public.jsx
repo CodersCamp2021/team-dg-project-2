@@ -1,6 +1,8 @@
 import '../styles/Public.css';
 
 import scheme from '../../data/scheme.json';
+import Button from '../components/Button';
+import Icon from '../components/Icon';
 
 const Public = () => {
   const experienceList = scheme.body.experience.map((work) => {
@@ -14,7 +16,7 @@ const Public = () => {
   const socialList = scheme.socials.map((social) => {
     return (
       <li key={social.id}>
-        <p>{`${social.id}: ${social.link}`}</p>
+        <Icon name={`${social.id}.svg`} link={`${social.link}`} />
       </li>
     );
   });
@@ -28,14 +30,14 @@ const Public = () => {
         <h2>
           {scheme.body.headline} {scheme.name} {scheme.surname}
         </h2>
-        <h4>{`${scheme.body.position} from ${scheme.body.location}`}</h4>
+        <h5>{`${scheme.body.position} from ${scheme.body.location}`}</h5>
         <p>{scheme.body.description}</p>
-        <h4>Experience:</h4>
+        <h5>Experience:</h5>
         <ul>{experienceList}</ul>
       </div>
+      <Button pathname="www.facebook.com" text="Contact me" />
       <div className="socials-container">
-        <h4>Socials:</h4>
-        <ul>{socialList}</ul>
+        <ul className="socials-list">{socialList}</ul>
       </div>
       <div className="signature-container">
         <img src={scheme.signature.signatureImg} alt={scheme.name} />

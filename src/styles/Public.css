@@ -3,7 +3,7 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 50%;
   background-color: white;
   border-radius: 5px;
   padding: 20px;
@@ -11,15 +11,16 @@
 }
 
 .img-container {
-  height: 200px;
-  width: 200px;
-  background-color: black;
+  height: 148px;
+  width: 148px;
+  background-color: var(--color-btnBcg);
   border-radius: 50%;
-  border: 5px solid silver;
+  margin: 20px;
 }
 
 .img-container img {
   border-radius: 50%;
+  width: 148px;
 }
 
 .content-container {
@@ -27,4 +28,29 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
+
+.socials-container {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-top: 1px solid #eeeeef;
+}
+
+.socials-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  width: 80%;
+  padding: 0;
+}
+
+.signature-container {
+  padding: 20px 0;
