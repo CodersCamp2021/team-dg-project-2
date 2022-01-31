@@ -1,6 +1,10 @@
 import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import PublicPage from './pages/PublicPage';
+import SignUp from './pages/SignUp';
+import LogIn from './pages/LogIn';
 
 const App = () => {
   return (
