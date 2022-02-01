@@ -1,0 +1,83 @@
+:root {
+  /* colors */
+  --color-bcg: #e5e5e5;
+  --color-navBcg: rgb(255, 255, 255);
+  --color-btnBcg: #0066ff;
+
+  /* text-colors */
+  --color-logo: #2769b6;
+  --color-black900: #1b1b20;
+  --color-black700: #3b3b43;
+  --color-black600: #4e4e58;
+  --color-btn: #ffffff;
+
+  /* font sizes */
+  --font-sizeH1: 48px;
+  --font-sizeH2: 39px;
+  --font-sizeH3: 31px;
+  --font-sizeH4: 25px;
+  --font-sizeH5: 20px;
+
+  --font-sizeBody1: 20px;
+  --font-sizeBody2: 18px;
+  --font-sizeBody3: 16px;
+
+  --font-sizeLabel1: 14px;
+  --font-sizeLabel2: 12px;
+
+  /* fonts */
+  --font-familyBody: 'Roboto', sans-serif;
+  --font-familyLogo: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bcg);
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-sizeH1);
+  color: var(--color-black900);
+}
+
+h2 {
+  font-size: var(--font-sizeH2);
+  color: var(--color-black900);
+}
+
+h3 {
+  font-size: var(--font-sizeH3);
+  color: var(--color-black600);
+}
+
+h4 {
+  font-size: var(--font-sizeH4);
+  color: var(--color-black600);
+}
+
+h5 {
+  font-size: var(--font-sizeH5);
+  color: var(--color-black600);
+}
+
+p {
+  font-size: var(--font-sizeBody3);
+  color: var(--color-black700);
+}
