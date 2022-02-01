@@ -1,0 +1,32 @@
+{
+  "id": 1,
+  "name": "Phil Json",
+  "email": "p.json@gmail.com",
+  "theme": "dark",
+  "photo": {
+    "src": "https://source.unsplash.com/random/200x200"
+  },
+  "body": {
+    "headline": "Graphic designer from Boston, MA",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, expedita. Voluptas accusantium eius quaerat blanditiis placeat illum, odio nam nesciunt.",
+    "phone": "1-770-736-8031",
+    "cta": {
+      "text": "Contact me",
+      "link": "www.medium.com"
+    },
+    "experience": [
+      { "id": 1, "text": "Lorem ipsum dolor sit amet" },
+      { "id": 2, "text": "Lorem ipsum dolor sit amet" },
+      { "id": 3, "text": "Lorem ipsum dolor sit amet" }
+    ]
+  },
+  "socials": [
+    { "id": "linkedin", "link": "https://linkedin.com" },
+    { "id": "twitter", "link": "https://twitter.com" },
+    { "id": "youtube", "link": "https://youtube.com" },
+    { "id": "github", "link": "https://github.com" }
+  ],
+  "signature": {
+    "src": "/randomSignature.png"
+  }
+}
