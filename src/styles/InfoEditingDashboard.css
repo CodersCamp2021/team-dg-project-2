@@ -1,3 +1,44 @@
-.dashboard__p-tag {
-  font-size: 4rem;
+@import 'index.css';
+
+* {
+  box-sizing: border-box;
+}
+
+.main-nav {
+  margin: 0;
+  box-shadow: 3px 4px 40px rgba(34, 34, 34, 0.349);
+}
+
+.dashboard {
+  width: 40vw;
+  height: 92vh;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.dashboard__content {
+  width: 80%;
+  text-align: left;
+}
+
+.dashboard__content__button-change-photo {
+  padding: 0px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  font-size: var(--font-sizeBody3);
+  color: var(--color-btnBcg);
+  background-color: var(--color-btn);
+  border: 2px solid var(--color-btnBcg);
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.dashboard__content__button-change-photo:hover {
+  color: var(--color-btn);
+  background-color: var(--color-btnBcg);
+  cursor: pointer;
 }
