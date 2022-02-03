@@ -24,7 +24,7 @@ const InfoEditingDashboard = () => {
           Change photo
         </button>
         <p className="dashboard__content__p dashboard__content__p--photo-dimensions">
-          Recommended dimension 256px x 256px. Max 2MB (jpg ,png).
+          Recommended dimension 256px x 256px. Max 2MB (jpg, png).
         </p>
 
         <h5 className="dashboard__content__h5 dashboard__content__h5--section-divider">Personal data</h5>
