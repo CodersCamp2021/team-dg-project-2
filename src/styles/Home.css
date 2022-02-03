@@ -56,19 +56,19 @@
   }
 
   @media screen and (max-width: 1279px) {
-    .home-container {
+    .home {
       height: 100%;
     }
-    .hero-section {
+    .home__section {
       flex-flow: column nowrap;
     }
 
-    .text-content {
+    .home__text {
       align-items: center;
       padding: 20px;
     }
 
-    .image-container {
+    .home__img {
       display: flex;
       justify-content: center;
       align-items: center;
