@@ -14,9 +14,9 @@ export default function Validate(values) {
     } else if (!/[0-9]/g.test(values.password)) {
         errors.password = 'Password must contain numbers'
     } else if (!/[a-z]/g.test(values.password)) {
-        errors.password = 'Password must contain both numeric and alphabetic characters'
+        errors.password = 'Password must contain lowercase and uppercase letters'
     } else if (!/[A-Z]/g.test(values.password)) {
-        errors.password = 'Password must contain both lowercase and uppercase letters'
+        errors.password = 'Password must contain lowercase and uppercase letters'
     }
 
     return errors;
