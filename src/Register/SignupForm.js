@@ -1,6 +1,8 @@
 import React from 'react';
 import useForm from './useForm'
 import validate from './Validate';
+import './styles/Form.css';
+import logo from '../../public/logo.svg';
 
 const FormSignup = ({submitForm}) => {
     const {handleChange, values, handleSubmit, errors}
@@ -11,6 +13,12 @@ const FormSignup = ({submitForm}) => {
 
   return (
     <div className='form-content'>
+        <div className="logo">
+            <img src={logo} alt="logo" />
+            <a href='#' className='text-logo'>
+                Thats.me
+            </a>
+        </div>
         <form className='form' onSubmit={handleSubmit}>
             <h1>Sign up</h1>
             <div className='form-inputs'>
@@ -22,7 +30,7 @@ const FormSignup = ({submitForm}) => {
                     type='text'
                     name='email' 
                     className='form-input'
-                    placeholder='Enter your email'  
+                    placeholder='Enter your email addres'  
                     value={values.email}    
                     onChange={handleChange}  
                 />
@@ -43,16 +51,23 @@ const FormSignup = ({submitForm}) => {
                 />
                {errors.password && <p>{errors.password}</p>}
             </div>
+            <div className='checkbox-form'>
+                <input type="checkbox" id="agree-policy" name="agree-policy" className='checkbox'/>
+                <label for="agree-policy" 
+                className='checkbox-label'>
+                    I agree <a href='#'>Privacy Policy,</a> and <a href='#'>Cookie Policy</a>
+                </label>
+            </div>
             <button className='form-input-btn'
             type='submit'>
                 Sign up
             </button>
         </form>
         <span className='form-input-login'>
-             Already a member? <a href='#'>Log in</a>
+            Already a member? <a href='#'>Log in</a>
         </span>
     </div>
   );
 };
 
-export default SignupForm;
+export default FormSignup;
