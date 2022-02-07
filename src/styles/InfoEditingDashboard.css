@@ -1,0 +1,118 @@
+@import 'index.css';
+
+* {
+  box-sizing: border-box;
+}
+
+.main-nav {
+  margin: 0;
+  box-shadow: 3px 4px 40px rgba(34, 34, 34, 0.349);
+}
+
+.dashboard {
+  width: 41rem;
+  height: 92vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem 2rem;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+.dashboard__content {
+  width: 80%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__content__h3 {
+  color: var(--color-black700);
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+.dashboard__content__button {
+  transition: 0.3s;
+  border-radius: 0.25rem;
+}
+
+.dashboard__content__button:hover {
+  cursor: pointer;
+}
+
+.dashboard__content__button-change--photo {
+  align-self: flex-start;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: var(--font-sizeBody3);
+  color: var(--color-btnBcg);
+  background-color: var(--color-btn);
+  border: 2px solid var(--color-btnBcg);
+}
+
+.dashboard__content__button-change--photo:hover {
+  color: var(--color-btn);
+  background-color: var(--color-btnBcg);
+}
+
+.dashboard__content__p {
+  color: var(--color-black600);
+}
+
+.dashboard__content__p--photo-dimensions {
+  font-size: var(--font-sizeLabel2);
+  margin-top: 0.2rem;
+}
+
+.dashboard__content__h5 {
+  color: var(--color-black700);
+  font-size: var(--font-sizeBody1);
+  font-weight: 400;
+}
+
+.dashboard__content__h5--section-divider {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboard__content__p--input-names {
+  font-size: var(--font-sizeLabel1);
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.margin-top-0 {
+  margin-top: 0;
+}
+
+.dashboard__content__input {
+  font-size: var(--font-sizeBody3);
+  color: var(--color-black600);
+  padding: 0.6rem 1rem;
+  width: 100%;
+}
+
+.dashboard__content__input--text-area {
+  height: 8rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  resize: none;
+}
+
+.dashboard__content__input--social-media {
+  margin-bottom: 1rem;
+}
+
+.dashboard__content__button-save-changes {
+  align-self: flex-end;
+  padding: 0.75rem 3rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  font-size: var(--font-sizeBody2);
+  color: var(--color-btn);
+  background-color: var(--color-btnBcg);
+  border: 2px solid var(--color-btnBcg);
+}
