@@ -3,6 +3,9 @@
   --color-bcg: #e5e5e5;
   --color-navBcg: rgb(255, 255, 255);
   --color-btnBcg: #0066ff;
+  --color-btnBcg-hover: #005be4;
+  --color-btnBcg-active: #0050c7;
+  --color-input-border: #ababb1;
 
   /* text-colors */
   --color-logo: #2769b6;

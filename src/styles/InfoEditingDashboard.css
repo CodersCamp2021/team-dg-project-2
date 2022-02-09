@@ -56,7 +56,14 @@
 
 .dashboard__content__button-change--photo:hover {
   color: var(--color-btn);
-  background-color: var(--color-btnBcg);
+  border-color: var(--color-btnBcg-hover);
+  background-color: var(--color-btnBcg-hover);
+}
+
+.dashboard__content__button-change--photo:active {
+  color: var(--color-btn);
+  border-color: var(--color-btnBcg-active);
+  background-color: var(--color-btnBcg-active);
 }
 
 .dashboard__content__p {
@@ -90,10 +97,24 @@
 }
 
 .dashboard__content__input {
+  -webkit-appearance: none;
+  border: 1px solid var(--color-input-border);
+  border-radius: 0.25rem;
   font-size: var(--font-sizeBody3);
   color: var(--color-black600);
   padding: 0.6rem 1rem;
   width: 100%;
+  transition: 0.3s;
+}
+
+.dashboard__content__input:hover {
+  border-color: var(--color-btnBcg);
+}
+
+.dashboard__content__input:focus {
+  border-color: var(--color-btnBcg);
+  color: black;
+  font-weight: 500;
 }
 
 .dashboard__content__input--text-area {
@@ -104,6 +125,26 @@
 
 .dashboard__content__input--social-media {
   margin-bottom: 1rem;
+  background-size: 1.25rem;
+  background-position: 0.75rem center;
+  background-repeat: no-repeat;
+  padding-left: 2.5rem;
+}
+
+.dashboard__content__input--social-media-twitter {
+  background-image: url('/public/twitter-input.png');
+}
+
+.dashboard__content__input--social-media-linkedin {
+  background-image: url('/public/linkedin-input.png');
+}
+
+.dashboard__content__input--social-media-youtube {
+  background-image: url('/public/youtube-input.png');
+}
+
+.dashboard__content__input--social-media-github {
+  background-image: url('/public/github-input.png');
 }
 
 .dashboard__content__button-save-changes {
@@ -115,4 +156,16 @@
   color: var(--color-btn);
   background-color: var(--color-btnBcg);
   border: 2px solid var(--color-btnBcg);
+}
+
+.dashboard__content__button-save-changes:hover {
+  color: var(--color-btn);
+  border-color: var(--color-btnBcg-hover);
+  background-color: var(--color-btnBcg-hover);
+}
+
+.dashboard__content__button-save-changes:active {
+  color: var(--color-btn);
+  border-color: var(--color-btnBcg-active);
+  background-color: var(--color-btnBcg-active);
 }
