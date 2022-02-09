@@ -1,0 +1,42 @@
+.flex-horizontal {
+  display: flex;
+}
+
+.flex-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard {
+  min-width: 41rem;
+}
+
+.public {
+  min-width: 40rem;
+  min-height: 50rem;
+  justify-content: space-between;
+  padding: 2rem;
+  text-align: center;
+}
+
+.description {
+  margin-top: 3rem;
+  width: 90%;
+  line-height: 1.5rem;
+}
+
+.public__socials {
+  margin-bottom: 0;
+}
+
+.public__signature {
+  width: 30%;
+  padding: 0;
+  align-self: flex-end;
+}
+
+.public__signature img {
+  width: 100%;
+}
