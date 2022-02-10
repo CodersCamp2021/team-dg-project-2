@@ -1,23 +1,29 @@
 .flex-horizontal {
   display: flex;
+  flex-flow: row nowrap;
+  flex-basis: 100%;
+  width: 100%;
 }
 
 .flex-center {
+  flex-basis: 60%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
 .dashboard {
-  min-width: 41rem;
+  flex-basis: 40%;
+  overflow: hidden;
+  height: 100%;
 }
 
 .public {
   min-width: 40rem;
   min-height: 50rem;
   justify-content: space-between;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -39,4 +45,34 @@
 
 .public__signature img {
   width: 100%;
+}
+
+@media screen and (max-width: 1279px) {
+  .flex-center {
+    flex-basis: 50%;
+  }
+
+  .public {
+    min-width: 30rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .flex-horizontal {
+    flex-flow: column nowrap;
+  }
+
+  .dashboard {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .flex-center {
+    width: 100%;
+  }
+
+  .public {
+    min-width: 10rem;
+  }
 }

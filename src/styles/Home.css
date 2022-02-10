@@ -12,6 +12,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
+  margin-top: 20px;
 }
 
 .home__text {
@@ -73,5 +74,12 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home__text h1,
+  h5 {
+    text-align: center;
   }
 }
