@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import LoginForm from './LoginForm';
-import DashboardView from '../DashboardView';
 
 function Login() {
   const adminUser = {
@@ -24,17 +23,10 @@ function Login() {
     }
   };
 
-  const Logout = () => {
-    setUser({ email: '' });
-  };
-
   return (
     <div className="App">
       {user.email !== '' ? (
-        <div>
-          <button onClick={Logout}>Logout</button>
-          <DashboardView />
-        </div>
+        <div>{(window.location.pathname = '/test-build')}</div>
       ) : (
         <LoginForm Login={Login} error={error} />
       )}

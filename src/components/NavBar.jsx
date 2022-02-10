@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 import logo from '../../public/logo.svg';
 
 const NavBar = () => {
+  const Logout = () => {
+    {
+      window.location.pathname = '/log-in';
+    }
+  };
+
   return (
     <nav className="main-nav">
       <div className="logo">
@@ -13,14 +19,22 @@ const NavBar = () => {
           Thats.me
         </Link>
       </div>
-      <div className="nav-links">
-        <Link to="sign-up" className="text-link">
-          Create yours
-        </Link>
-        <Link to="log-in" className="text-link">
-          Log in
-        </Link>
-      </div>
+      {window.location.pathname === '/test-build' ? (
+        <div>
+          <button className="btn-logout" onClick={Logout}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <div className="nav-links">
+          <Link to="sign-up" className="text-link">
+            Create yours
+          </Link>
+          <Link to="log-in" className="text-link">
+            Log in
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
