@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 1rem 2rem;
+  padding: 3rem 1rem 2rem;
   margin: 0;
   overflow-y: scroll;
 }
@@ -31,7 +31,7 @@
 .dashboard__content__h3 {
   color: var(--color-black700);
   font-weight: 400;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .dashboard__content__button {
@@ -163,6 +163,7 @@
   color: var(--color-btn);
   border-color: var(--bg-btn-hover);
   background-color: var(--bg-btn-hover);
+  transform: scale(1.05);
 }
 
 .dashboard__content__button-save-changes:active {
