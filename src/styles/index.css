@@ -1,3 +1,5 @@
+@import './reset.css';
+
 :root {
   /* colors */
   --bg-light: #e5e5e5;
@@ -13,6 +15,7 @@
   --color-black700: #3b3b43;
   --color-black600: #4e4e58;
   --color-btn: #ffffff;
+  --color-error: #e23636;
   --color-white: #ffffff;
 
   /* font sizes */
