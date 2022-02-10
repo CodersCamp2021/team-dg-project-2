@@ -39,18 +39,18 @@
 
 .form-label {
   font-size: var(--font-sizeLabel1);
-  color: var(--color-label);
+  color: var(--color-black600);
 }
 
 .form-input {
   box-sizing: border-box;
-  color: var(--color-input);
+  color: var(--color-black600);
   padding: 14px 24px;
   width: 316px;
   height: 52px;
   margin: 4px 0;
   border-radius: 4px;
-  border: 1px solid var(--color-input);
+  border: 1px solid var(--input-border);
   outline: none;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .form-input:focus {
-  border: 2px solid var(--color-btnBcg);
+  border: 2px solid var(--bg-btn);
   color: var(--color-black600);
 }
 
@@ -68,7 +68,7 @@
   width: 316px;
   height: 52px;
   border-radius: 4px;
-  background-color: var(--color-btnBcg);
+  background-color: var(--bg-btn);
   color: var(--color-btn);
   border: none;
   font-weight: 600;
@@ -78,7 +78,7 @@
 }
 
 .form-input-btn:hover {
-  background-color: var(--color-btnBcg-hover);
+  background-color: var(--bg-btn-hover);
 }
 
 .form-input-login {
@@ -95,7 +95,7 @@
 
 .password-components a {
   text-decoration: none;
-  color: var(--color-btnBcg);
+  color: var(--bg-btn);
   font-size: var(--font-sizeLabel1);
 }
 
@@ -112,7 +112,7 @@
 }
 
 .checkbox-label {
-  color: var(--color-label);
+  color: var(--input-border);
   font-size: var(--font-sizeLabel2);
 }
 
@@ -122,12 +122,12 @@
 }
 
 .checkbox-label a {
-  color: var(--color-label);
+  color: var(--input-border);
 }
 
 .form-input-login a {
   text-decoration: none;
-  color: var(--color-btnBcg);
+  color: var(--bg-btn);
 }
 
 .details-error {
