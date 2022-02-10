@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Login from './pages/login/LoginLogic';
 import PublicPage from './pages/PublicPage';
 import SignupForm from './pages/Register/SignupForm';
+import TestBuild from './pages/TestBuild';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/sign-up" element={<SignupForm />} />
         <Route path="/log-in" element={<Login />} />
         <Route path="/dashboard-view" element={<DashboardView />} />
+        <Route path="/test-build" element={<TestBuild />} />
       </Routes>
     </div>
   );

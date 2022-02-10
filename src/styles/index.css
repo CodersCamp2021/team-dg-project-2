@@ -5,6 +5,9 @@
   --bg-light: #e5e5e5;
   --bg-nav-light: rgb(255, 255, 255);
   --bg-btn: #0066ff;
+  --bg-btn-hover: #005be4;
+  --bg-btn-active: #0050c7;
+  --input-border: #ababb1;
 
   /* text-colors */
   --color-logo: #2769b6;

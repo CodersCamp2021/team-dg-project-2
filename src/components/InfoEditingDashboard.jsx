@@ -61,7 +61,7 @@ const InfoEditingDashboard = () => {
           onChange={(e) => setDescription(e.target.value)}
         />
 
-        <p className="dashboard__content__p dashboard__content__p--input-names">enter Your email</p>
+        <p className="dashboard__content__p dashboard__content__p--input-names">Email</p>
         <input
           className="dashboard__content__input"
           type="text"
@@ -72,28 +72,28 @@ const InfoEditingDashboard = () => {
         <h5 className="dashboard__content__h5 dashboard__content__h5--section-divider">Social media</h5>
 
         <input
-          className="dashboard__content__input dashboard__content__input--social-media"
+          className="dashboard__content__input dashboard__content__input--social-media dashboard__content__input--social-media-twitter"
           type="text"
           value={twitterLink}
           onChange={(e) => setTwitterLink(e.target.value)}
         />
 
         <input
-          className="dashboard__content__input dashboard__content__input--social-media"
+          className="dashboard__content__input dashboard__content__input--social-media dashboard__content__input--social-media-linkedin"
           type="text"
           value={linkedInLink}
           onChange={(e) => setLinkedInLink(e.target.value)}
         />
 
         <input
-          className="dashboard__content__input dashboard__content__input--social-media"
+          className="dashboard__content__input dashboard__content__input--social-media dashboard__content__input--social-media-youtube"
           type="text"
           value={youTubeLink}
           onChange={(e) => setYouTubeLink(e.target.value)}
         />
 
         <input
-          className="dashboard__content__input dashboard__content__input--social-media"
+          className="dashboard__content__input dashboard__content__input--social-media dashboard__content__input--social-media-github"
           type="text"
           value={gitHubLink}
           onChange={(e) => setGitHubLink(e.target.value)}
