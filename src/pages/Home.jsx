@@ -1,7 +1,7 @@
 import '../styles/Home.css';
 
 import frame from '../../public/frame.png';
-import Button from '../components/Button.jsx';
+import Button from '../components/Button';
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
         <div className="home__text">
           <h1>Build your portfolio website</h1>
           <h5>One page in less than 5 minutes!</h5>
-          <Button pathname="/test-build" text="Build up" />
+          <Button pathname="/try-it-out" text="Build up" />
         </div>
         <div className="home__img">
           <img src={frame} className="home__frame" alt="showcase-img" />
