@@ -35,7 +35,7 @@ Front-end:
 
 Aby uruchomić aplikację na lokalnej maszynie, wykonaj następujące kroki:
 
-1. Zainstaluj zależności za pomocą komendy: `npm install`
+1. Zainstaluj zależności za pomocą komendy: `yarn install`
 2. Wystartuj serwer developerski `yarn run dev`
 
 **V. Link do działającego DEMO:** https://thatsme.netlify.app/
