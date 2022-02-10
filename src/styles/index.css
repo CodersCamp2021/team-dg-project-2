@@ -1,8 +1,10 @@
+@import './reset.css';
+
 :root {
   /* colors */
-  --color-bcg: #e5e5e5;
-  --color-navBcg: rgb(255, 255, 255);
-  --color-btnBcg: #0066ff;
+  --bg-light: #e5e5e5;
+  --bg-nav-light: rgb(255, 255, 255);
+  --bg-btn: #0066ff;
 
   /* text-colors */
   --color-logo: #2769b6;
@@ -11,6 +13,7 @@
   --color-black600: #4e4e58;
   --color-btn: #ffffff;
   --color-error: #e23636;
+  --color-white: #ffffff;
 
   /* font sizes */
   --font-sizeH1: 48px;
@@ -36,7 +39,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-bcg);
+  background-color: var(--bg-light);
   margin: 0;
   padding: 0;
 }
