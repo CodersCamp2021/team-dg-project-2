@@ -7,7 +7,7 @@ import DashboardView from './pages/DashboardView';
 import Home from './pages/Home';
 import LogIn from './pages/LogIn';
 import PublicPage from './pages/PublicPage';
-import SignUp from './pages/SignUp';
+import SignupForm from './pages/Register/SignupForm';
 import TestBuild from './pages/TestBuild';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/public" element={<PublicPage />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-up" element={<SignupForm />} />
         <Route path="/log-in" element={<LogIn />} />
         <Route path="/dashboard-view" element={<DashboardView />} />
         <Route path="/test-build" element={<TestBuild />} />
