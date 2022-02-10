@@ -16,7 +16,7 @@
 
 .contact-me:hover {
   background-color: var(--bg-btn-hover);
-  transform: scale(1.25);
+  transform: scale(1.15);
 }
 
 .contact-me:active {

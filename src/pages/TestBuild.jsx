@@ -5,8 +5,6 @@ import { useState } from 'react';
 
 import PublicPage from './PublicPage';
 
-// import { Link } from 'react-router-dom';
-
 const InfoEditingDashboard = () => {
   const [name, setName] = useState('Phil Json');
   const [profession, setProfession] = useState('Graphic designer');
