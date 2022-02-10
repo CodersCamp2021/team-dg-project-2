@@ -1,24 +1,19 @@
+/* eslint-disable react/prop-types */
 import '../styles/PublicPage.css';
+import '../styles/Button.css';
 
 import data from '../../data/data.json';
-import Button from '../components/Button';
 import Icon from '../components/Icon';
 
-const PublicPage = () => {
-  const { body, name, photo, email, theme, socials, signature } = data;
-
-  const experienceList = body.experience.map((work) => {
-    return (
-      <li key={work.id}>
-        <p>{work.text}</p>
-      </li>
-    );
-  });
+const PublicPage = ({ name, profession, location, description, email }) => {
+  const { socials, photo } = data;
 
   const socialList = socials.map((social) => {
     return (
       <li key={social.id}>
-        <Icon name={`${social.id}.svg`} />
+        <a href={social.link} target="_blank" rel="noreferrer">
+          <Icon name={`${social.id}.svg`} />
+        </a>
       </li>
     );
   });
@@ -30,17 +25,19 @@ const PublicPage = () => {
       </div>
       <div className="public__content">
         <h2>{name}</h2>
-        <h5>{body.headline}</h5>
-        <p>{body.description}</p>
-        <h5>Experience:</h5>
-        <ul>{experienceList}</ul>
+        <h5>
+          {profession} from {location}
+        </h5>
+        <p className="description">{description}</p>
       </div>
-      <Button pathname={body.cta.link} text={body.cta.text} />
+      <button type="button" className="btn contact-me" onClick={() => alert(`Email sent to: ${email}`)}>
+        Contact me
+      </button>
       <div className="public__socials">
         <ul className="public__socials-list">{socialList}</ul>
       </div>
       <div className="public__signature">
-        <img src={signature.src} alt={name} />
+        <img src="/public/signature.png" alt="" />
       </div>
     </div>
   );

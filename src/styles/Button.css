@@ -9,3 +9,16 @@
   cursor: pointer;
   margin: 10px;
 }
+
+.contact-me {
+  transition: 0.3s;
+}
+
+.contact-me:hover {
+  background-color: var(--bg-btn-hover);
+  transform: scale(1.25);
+}
+
+.contact-me:active {
+  background-color: var(--bg-btn-active);
+}
