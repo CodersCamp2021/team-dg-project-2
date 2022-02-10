@@ -50,3 +50,9 @@
   color: var(--color-black700);
   padding: 24px;
 }
+
+@media screen and (max-width: 768px) {
+  .text-link {
+    padding: 0;
+  }
+}
