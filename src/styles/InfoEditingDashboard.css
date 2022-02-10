@@ -49,21 +49,21 @@
   margin-bottom: 0;
   font-weight: 500;
   font-size: var(--font-sizeBody3);
-  color: var(--color-btnBcg);
+  color: var(--bg-btn);
   background-color: var(--color-btn);
-  border: 2px solid var(--color-btnBcg);
+  border: 2px solid var(--bg-btn);
 }
 
 .dashboard__content__button-change--photo:hover {
   color: var(--color-btn);
-  border-color: var(--color-btnBcg-hover);
-  background-color: var(--color-btnBcg-hover);
+  border-color: var(--bg-btn-hover);
+  background-color: var(--bg-btn-hover);
 }
 
 .dashboard__content__button-change--photo:active {
   color: var(--color-btn);
-  border-color: var(--color-btnBcg-active);
-  background-color: var(--color-btnBcg-active);
+  border-color: var(--bg-btn-active);
+  background-color: var(--bg-btn-active);
 }
 
 .dashboard__content__p {
@@ -99,7 +99,7 @@
 
 .dashboard__content__input {
   -webkit-appearance: none;
-  border: 1px solid var(--color-input-border);
+  border: 1px solid var(--input-border);
   border-radius: 0.25rem;
   font-size: var(--font-sizeBody3);
   color: var(--color-black600);
@@ -109,11 +109,11 @@
 }
 
 .dashboard__content__input:hover {
-  border-color: var(--color-btnBcg);
+  border-color: var(--bg-btn);
 }
 
 .dashboard__content__input:focus {
-  border-color: var(--color-btnBcg);
+  border-color: var(--bg-btn);
   color: black;
   font-weight: 500;
 }
@@ -155,18 +155,18 @@
   font-weight: 600;
   font-size: var(--font-sizeBody2);
   color: var(--color-btn);
-  background-color: var(--color-btnBcg);
-  border: 2px solid var(--color-btnBcg);
+  background-color: var(--bg-btn);
+  border: 2px solid var(--bg-btn);
 }
 
 .dashboard__content__button-save-changes:hover {
   color: var(--color-btn);
-  border-color: var(--color-btnBcg-hover);
-  background-color: var(--color-btnBcg-hover);
+  border-color: var(--bg-btn-hover);
+  background-color: var(--bg-btn-hover);
 }
 
 .dashboard__content__button-save-changes:active {
   color: var(--color-btn);
-  border-color: var(--color-btnBcg-active);
-  background-color: var(--color-btnBcg-active);
+  border-color: var(--bg-btn-active);
+  background-color: var(--bg-btn-active);
 }
