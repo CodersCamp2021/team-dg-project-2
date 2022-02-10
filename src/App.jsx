@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import DashboardView from './pages/DashboardView';
 import Home from './pages/Home';
-import LogIn from './pages/LogIn';
+import Login from './pages/login/LoginLogic';
 import PublicPage from './pages/PublicPage';
 import SignupForm from './pages/Register/SignupForm';
 import TestBuild from './pages/TestBuild';
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/public" element={<PublicPage />} />
         <Route path="/sign-up" element={<SignupForm />} />
-        <Route path="/log-in" element={<LogIn />} />
+        <Route path="/log-in" element={<Login />} />
         <Route path="/dashboard-view" element={<DashboardView />} />
         <Route path="/test-build" element={<TestBuild />} />
       </Routes>
