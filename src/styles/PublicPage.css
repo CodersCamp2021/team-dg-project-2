@@ -13,7 +13,7 @@
 .public__img {
   height: 148px;
   width: 148px;
-  background-color: var(--color-btnBcg);
+  background-color: var(--bg-btn);
   border-radius: 50%;
   margin: 20px;
 }
@@ -56,8 +56,13 @@
   padding: 20px 0;
 }
 
-.svg-fill:hover {
-  filter: invert(1);
 
+.svg-fill:hover {
   filter: invert(1) sepia(0.4) saturate(9) hue-rotate(175deg);
+}
+
+@media screen and (max-width: 768px) {
+  .public {
+    width: 100%;
+  }
 }
