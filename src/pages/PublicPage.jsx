@@ -37,7 +37,7 @@ const PublicPage = ({ name, profession, location, description, email }) => {
         <ul className="public__socials-list">{socialList}</ul>
       </div>
       <div className="public__signature">
-        <img src="/public/signature.png" alt="" />
+        <img src="/signature.png" alt="" />
       </div>
     </div>
   );
