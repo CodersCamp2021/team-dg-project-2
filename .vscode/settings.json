@@ -9,6 +9,10 @@
     "**/.yarn": true,
     "yarn.lock": true
   },
+  "rest-client.defaultHeaders": {
+    "Content-Type": "application/json",
+    "User-Agent": "vscode-restclient"
+  },
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },

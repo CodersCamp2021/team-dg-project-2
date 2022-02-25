@@ -20,6 +20,7 @@ coverage
 # Production
 dist
 dist-ssr
+**/server/public
 
 # npm
 .npm
