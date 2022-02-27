@@ -3,9 +3,8 @@ import '../styles/Home.css';
 import React from 'react';
 
 import frame from '../../public/frame.png';
-
 import Button from '../components/Button';
-import { Gradient } from '../vendor/Gradient.js';
+import { Gradient } from '../vendor/Gradient';
 
 class Home extends React.Component {
   componentDidMount() {
