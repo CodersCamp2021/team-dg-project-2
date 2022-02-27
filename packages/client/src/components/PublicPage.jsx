@@ -3,7 +3,7 @@ import '../styles/PublicPage.css';
 import '../styles/Button.css';
 
 import data from '../../data/data.json';
-import Icon from '../components/Icon';
+import Icon from './Icon';
 
 const PublicPage = ({ name, profession, location, description, email }) => {
   const { socials, photo } = data;
