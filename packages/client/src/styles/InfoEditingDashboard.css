@@ -148,8 +148,20 @@
   background-image: url('/public/github.svg');
 }
 
+.button-container {
+  display: flex;
+  justify-content: end;
+  background-color: white;
+  margin-left: 0;
+  width: 41rem;
+  padding: 0.75rem 1rem;
+  position: fixed;
+  bottom: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04), 0px 4px 96px rgba(0, 0, 0, 0.08);
+}
+
 .dashboard__content__button-save-changes {
-  align-self: flex-end;
+  margin-right: 10%;
   padding: 0.75rem 3rem;
   margin-top: 0.5rem;
   font-weight: 600;
@@ -157,6 +169,7 @@
   color: var(--color-btn);
   background-color: var(--bg-btn);
   border: 2px solid var(--bg-btn);
+  margin-bottom: 0.5rem;
 }
 
 .dashboard__content__button-save-changes:hover {
@@ -170,4 +183,11 @@
   color: var(--color-btn);
   border-color: var(--bg-btn-active);
   background-color: var(--bg-btn-active);
+}
+
+.dashboard__content__button-save-changes:disabled {
+  background-color: var(--bg-btn-disabled);
+  border-color: var(--bg-btn-disabled);
+  cursor: not-allowed;
+  transform: none;
 }
