@@ -4,7 +4,16 @@ import app from './app';
 import env from './constants/env';
 import logger from './utils/logger';
 
-const dbConfig = env.NODE_ENV === 'production' ? {} : { dbName: 'local-project-db' };
+import fs from "fs";
+
+if (process.env.CA_CERT) {
+  fs.writeFileSync('ca_cert.crt', process.env.CA_CERT);
+}
+
+const dbConfig = env.NODE_ENV === 'production' ? {
+  ssl: true,
+  sslCA: 'ca_cert.crt',
+} : { dbName: 'local-project-db' };
 
 let server;
 
