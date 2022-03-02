@@ -5,9 +5,9 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import DashboardView from './pages/DashboardView';
 import Home from './pages/Home';
-import Login from './pages/login/LoginLogic';
+import Login from './pages/Login';
 import PublicPage from './pages/PublicPage';
-import SignupForm from './pages/Register/SignupForm';
+import SignUp from './pages/SignUp';
 import TestBuild from './pages/TestBuild';
 
 const App = () => {
@@ -15,9 +15,9 @@ const App = () => {
     <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" exact element={<Home />} />
         <Route path="/public" element={<PublicPage />} />
-        <Route path="/sign-up" element={<SignupForm />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/log-in" element={<Login />} />
         <Route path="/dashboard-view" element={<DashboardView />} />
         <Route path="/try-it-out" element={<TestBuild />} />

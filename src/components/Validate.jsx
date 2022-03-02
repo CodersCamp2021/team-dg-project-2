@@ -1,5 +1,5 @@
 export default function Validate(values) {
-  let errors = {};
+  const errors = {};
   const check = document.getElementById('agree-policy');
 
   if (!values.email) {
