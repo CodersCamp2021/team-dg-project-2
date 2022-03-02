@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import logo from '../../../public/logo.svg';
-import '../../styles/Form.css';
+import '../styles/Form.css';
 
-function Login({ Login, error }) {
-  const [details, setDetails] = useState({ name: '', email: '', password: '' });
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+function LoginForm({ Login, error }) {
+  const [details, setDetails] = useState({ email: '', password: '' });
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -14,12 +14,6 @@ function Login({ Login, error }) {
 
   return (
     <div className="form-content">
-      {/* <div className="logo">
-                <img src={logo} alt="logo" />
-                <a href='#' className='text-logo'>
-                    Thats.me
-                </a>
-            </div> */}
       <form className="form" onSubmit={submitHandler}>
         <h1>Log in</h1>
         <div className="details-error">{error !== '' ? <div>{error}</div> : ''}</div>
@@ -54,7 +48,7 @@ function Login({ Login, error }) {
         <div className="password-components">
           <div className="checkbox-form">
             <input type="checkbox" id="remember-me" name="remember-me" className="checkbox" />
-            <label for="remember-me" className="checkbox-label-login">
+            <label htmlFor="remember-me" className="checkbox-label-login">
               Remember me
             </label>
           </div>
@@ -71,4 +65,4 @@ function Login({ Login, error }) {
   );
 }
 
-export default Login;
+export default LoginForm;
