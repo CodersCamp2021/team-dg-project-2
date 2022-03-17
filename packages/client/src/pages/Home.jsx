@@ -3,9 +3,8 @@ import '../styles/Home.css';
 import React from 'react';
 
 import frame from '../../public/frame.png';
-
 import Button from '../components/Button';
-import { Gradient } from '../vendor/Gradient.js';
+import { Gradient } from '../vendor/Gradient';
 
 class Home extends React.Component {
   componentDidMount() {
@@ -26,7 +25,7 @@ class Home extends React.Component {
           <div className="home__text">
             <h1>Build your portfolio website</h1>
             <h5>One page in less than 5 minutes!</h5>
-            <Button pathname="/try-it-out" text="Build up" />
+            <Button pathname="/editor-mode" text="Build up" />
           </div>
           <div className="home__img">
             <img src={frame} className="home__frame" alt="showcase-img" />
