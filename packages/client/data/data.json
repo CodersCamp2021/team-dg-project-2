@@ -7,7 +7,8 @@
     "src": "https://source.unsplash.com/random/200x200"
   },
   "body": {
-    "headline": "Graphic designer from Boston, MA",
+    "profession": "Graphic designer",
+    "location": "Boston, MA",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, expedita. Voluptas accusantium eius quaerat blanditiis placeat illum, odio nam nesciunt.",
     "phone": "1-770-736-8031",
     "cta": {

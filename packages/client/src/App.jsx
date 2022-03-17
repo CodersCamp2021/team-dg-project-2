@@ -3,12 +3,11 @@ import './styles/App.css';
 import { Route, Routes } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
-import DashboardView from './pages/DashboardView';
 import Home from './pages/Home';
 import Login from './pages/login/LoginLogic';
-import PublicPage from './pages/PublicPage';
+import PageEdit from './pages/PageEdit';
+import PublicPageView from './pages/PublicPageView';
 import SignupForm from './pages/Register/SignupForm';
-import TestBuild from './pages/TestBuild';
 
 const App = () => {
   return (
@@ -16,11 +15,10 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/public" element={<PublicPage />} />
+        <Route path="/public" element={<PublicPageView />} />
         <Route path="/sign-up" element={<SignupForm />} />
         <Route path="/log-in" element={<Login />} />
-        <Route path="/dashboard-view" element={<DashboardView />} />
-        <Route path="/try-it-out" element={<TestBuild />} />
+        <Route path="/editor-mode" element={<PageEdit />} />
       </Routes>
     </div>
   );

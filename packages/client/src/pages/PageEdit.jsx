@@ -3,9 +3,9 @@ import '../styles/TestBuild.css';
 
 import { useState } from 'react';
 
-import PublicPage from './PublicPage';
+import PublicPage from '../components/PublicPage';
 
-const InfoEditingDashboard = () => {
+const PageEdit = () => {
   const [name, setName] = useState('Phil Json');
   const [profession, setProfession] = useState('Graphic designer');
   const [location, setLocation] = useState('Boston, MA');
@@ -125,4 +125,4 @@ const InfoEditingDashboard = () => {
   );
 };
 
-export default InfoEditingDashboard;
+export default PageEdit;
