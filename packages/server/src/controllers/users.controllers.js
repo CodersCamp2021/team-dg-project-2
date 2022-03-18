@@ -7,7 +7,10 @@ const usersControllers = (router) => {
   // @route GET /api/users
   // @access Private
   router.get('/users', async (_req, res) => {
-    const user = await User.find();
+    const user = await User.find({
+      email: _req.body.email,
+      password: _req.body.password,
+    });
 
     res.status(200).json(user);
   });
@@ -25,7 +28,6 @@ const usersControllers = (router) => {
     const thisUserId = Math.round(Math.random() * 1000000000000);
 
     const user = await User.create({
-      id: thisUserId,
       email: _req.body.email,
       password: _req.body.password,
       slug: _req.body.slug,
