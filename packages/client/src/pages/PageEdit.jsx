@@ -6,28 +6,53 @@ import { useState } from 'react';
 import PublicPage from '../components/PublicPage';
 
 const PageEdit = () => {
-  const [name, setName] = useState('Phil Json');
-  const [profession, setProfession] = useState('Graphic designer');
-  const [location, setLocation] = useState('Boston, MA');
-  const [description, setDescription] = useState(
-    'I am an awarded and certified marketing tech solutions engineer with expert level experience consulting, implementing, and managing digital creative automation campaigns via email, mobile, push notifications, MMS, SMS and social media with the use of the following languages: SQL, XML, XSLT, JSON, HTML, '
-  );
-  const [email, setEmail] = useState('thatJsonGuy@gmail.com');
-
-  const [twitterLink, setTwitterLink] = useState('https://twitter.com/phelippe-son-of-json');
-  const [linkedInLink, setLinkedInLink] = useState('https://www.linkedin.com/in/json-phelippe/');
-  const [youTubeLink, setYouTubeLink] = useState('https://www.youtube.com/thatjsonbuddy');
-  const [gitHubLink, setGitHubLink] = useState('https://github.com/jsonboiii');
-
-  const [visible, setVisible] = useState('');
-
-  const hideDashboard = () => {
-    setVisible('hidden');
+  const defaultDate = {
+    name: 'Phil Json',
+    profession: 'Graphic designer',
+    location: 'Boston, MA',
+    description:
+      'I am an awarded and certified marketing tech solutions engineer with expert level experience consulting, implementing, and managing digital creative automation campaigns via email, mobile, push notifications, MMS, SMS and social media with the use of the following languages: SQL, XML, XSLT, JSON, HTML, ',
+    email: 'thatJsonGuy@gmail.com',
+    twitter: 'https://twitter.com/phelippe-son-of-json',
+    linkedIn: 'https://www.linkedin.com/in/json-phelippe/',
+    youTube: 'https://www.youtube.com/thatjsonbuddy',
+    gitHub: 'https://github.com/jsonboiii',
   };
+  const [name, setName] = useState(defaultDate.name);
+  const [profession, setProfession] = useState(defaultDate.profession);
+  const [location, setLocation] = useState(defaultDate.location);
+  const [description, setDescription] = useState(defaultDate.description);
+  const [email, setEmail] = useState(defaultDate.email);
+
+  const [twitterLink, setTwitterLink] = useState(defaultDate.twitter);
+  const [linkedInLink, setLinkedInLink] = useState(defaultDate.linkedIn);
+  const [youTubeLink, setYouTubeLink] = useState(defaultDate.youTube);
+  const [gitHubLink, setGitHubLink] = useState(defaultDate.gitHub);
+
+  const logSuccess = () => {
+    console.log('Saved Changes');
+  };
+
+  const buttonDisabled = () => {
+    if (
+      name === defaultDate.name &&
+      profession === defaultDate.profession &&
+      location === defaultDate.location &&
+      description === defaultDate.description &&
+      email === defaultDate.email &&
+      twitterLink === defaultDate.twitter &&
+      linkedInLink === defaultDate.linkedIn &&
+      youTubeLink === defaultDate.youTube &&
+      gitHubLink === defaultDate.gitHub
+    )
+      return true;
+  };
+
+  const buttonStatus = buttonDisabled();
 
   return (
     <div className="flex-horizontal">
-      <div className={visible}>
+      <div className="visible">
         <div className="dashboard">
           <div className="dashboard__content">
             <h3 className="dashboard__content__h3">Edit your page</h3>
@@ -98,10 +123,13 @@ const PageEdit = () => {
               value={gitHubLink}
               onChange={(e) => setGitHubLink(e.target.value)}
             />
+          </div>
+          <div className="button-container">
             <button
               className="dashboard__content__button dashboard__content__button-save-changes"
               type="button"
-              onClick={hideDashboard}
+              onClick={logSuccess}
+              disabled={buttonStatus}
             >
               Save Changes
             </button>
