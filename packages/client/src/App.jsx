@@ -5,9 +5,9 @@ import { Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import LogIn from './pages/LogIn';
-import SignUp from './pages/SignUp';
 import PageEdit from './pages/PageEdit';
 import PublicPageView from './pages/PublicPageView';
+import SignUp from './pages/SignUp';
 
 const App = () => {
   return (

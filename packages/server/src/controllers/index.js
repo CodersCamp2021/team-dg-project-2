@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
+import filesControllers from './files.controllers';
+import pagesControllers from './pages.controllers';
 import pingControllers from './ping.controllers';
 import usersControllers from './users.controllers';
-import pagesControllers from './pages.controllers';
-import filesControllers from './files.controllers';
 
 const router = Router();
 
