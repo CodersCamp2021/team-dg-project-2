@@ -22,7 +22,7 @@
 
 .dashboard {
   flex-basis: 40%;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100%;
 }
 
@@ -72,6 +72,10 @@
   .dashboard {
     justify-content: center;
     align-items: center;
+    width: 100%;
+  }
+
+  .button-container {
     width: 100%;
   }
 
