@@ -1,40 +1,67 @@
+/* eslint-disable prettier/prettier */
 import { StatusCodes } from 'http-status-codes';
-
+const asyncHandler = require('express-async-handler');
+const bcrypt = require('bcryptjs');
 const User = require('../models/userSchema');
 
+
+
 const usersControllers = (router) => {
-  // @desc show users
-  // @route GET /api/users
-  // @access Private
-  router.get('/users', async (_req, res) => {
-    const user = await User.find({
-      email: _req.body.email,
-      password: _req.body.password,
-    });
-
-    res.status(200).json(user);
-  });
-
-  // @desc Create user
+  // @desc Register user
   // @route POST /api/users
-  // @access Public
-  router.post('/users', async (_req, res) => {
-    // it works but not fully
-    // if (!_req.body.email || !_req.body.password || !_req.body.slug) {
-    //   res.status(400).json({ error: 'Info mate' });
-    //   throw new Error('Please provide info');
-    // }
+  router.post('/users', asyncHandler (async (req, res) => {
+   const { email, password} = req.body
 
-    const thisUserId = Math.round(Math.random() * 1000000000000);
+   if(!email || !password) {
+    res.status(StatusCodes.BAD_REQUEST).send({ error: 'Please add a text field' })
+   }
 
-    const user = await User.create({
-      email: _req.body.email,
-      password: _req.body.password,
-      slug: _req.body.slug,
-    });
+  //  Check if user exist
+  const userExists = await User.findOne({email})
 
-    res.status(200).json(user);
-  });
+   if(userExists) {
+     res.status(StatusCodes.BAD_REQUEST).send({error: 'user already exists'})
+   }
+
+  //  Hash password
+  const salt = await bcrypt.genSalt(10)
+  const hashedPassword = await bcrypt.hash(password, salt)
+
+  // Create user
+  const user = await User.create({
+    email,
+    password: hashedPassword
+  })
+
+  if(user) {
+    res.status(StatusCodes.CREATED).send({
+      _id: user.id,
+      email: user.email
+    })
+  } else {
+    res.status(StatusCodes.BAD_REQUEST).send({ error: 'invalid user data'})
+  }
+
+    res.json({message: 'register user'});
+  }));
+
+  // @desc Login user
+  // @route POST /api/users/me
+  router.post('/users/login', asyncHandler (async (req, res) => {
+    const { email, password} = req.body;
+
+    // Check for user email
+    const user = await User.findOne({email})
+
+    if(user && (await bcrypt.compare(password, user.password))) {
+      res.json({
+        _id: user.id,
+        email: user.email
+      }) 
+    } else {
+      res.status(StatusCodes.BAD_REQUEST).send({ error: 'invalid credentials'})
+    }
+   }));
+
 };
-
 export default usersControllers;
