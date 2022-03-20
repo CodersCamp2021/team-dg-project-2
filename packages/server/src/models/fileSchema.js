@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 
 const fileSchema = mongoose.Schema({
-  file: {
+  filePath: {
+    type: Object,
+    required: [true, 'Please provide photo only'],
+  },
+  name: {
     type: String,
     required: [true, 'Please provide photo only'],
   },

@@ -56,6 +56,10 @@ const PageEdit = () => {
         <div className="dashboard">
           <div className="dashboard__content">
             <h3 className="dashboard__content__h3">Edit your page</h3>
+            <form action="http://localhost:4000/api/files/" method="post" encType="multipart/form-data">
+              <input type="file" name="sampleFile" />
+              <input type="submit" value="Upload!" />
+            </form>
             <button className="dashboard__content__button dashboard__content__button-change--photo" type="button">
               Change photo
             </button>
