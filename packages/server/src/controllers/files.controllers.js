@@ -1,7 +1,8 @@
+import fileUpload from 'express-fileupload';
+import fs from 'fs';
 import { StatusCodes } from 'http-status-codes';
 
-const fileUpload = require('express-fileupload');
-const File = require('../models/fileSchema');
+import File from '../models/fileSchema';
 
 const filesControllers = (router) => {
   // @desc Get file by name
@@ -31,9 +32,19 @@ const filesControllers = (router) => {
       return res.status(400).send('No files were uploaded.');
     }
 
+    const publicFolder = `${__dirname}/../../public`;
+
+    try {
+      if (!fs.existsSync(publicFolder)) {
+        fs.mkdirSync(publicFolder);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     const { sampleFile } = req.files;
-    const uploadPath = `${__dirname}/../../public/${sampleFile.name}`;
+    const uploadPath = `${publicFolder}/${sampleFile.name}`;
 
     // Check if file size is not exceeding 2mb
     if (req.files.sampleFile.truncated) {
