@@ -1,7 +1,8 @@
+import bcrypt from 'bcryptjs';
+import asyncHandler from 'express-async-handler';
 import { StatusCodes } from 'http-status-codes';
-const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcryptjs');
-const User = require('../models/userSchema');
+
+import User from '../models/userSchema';
 
 const usersControllers = (router) => {
   // @desc Register user
