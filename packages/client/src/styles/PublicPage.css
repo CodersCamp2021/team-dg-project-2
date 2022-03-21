@@ -45,7 +45,7 @@
 .public__socials-list {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   list-style-type: none;
   width: 80%;
@@ -55,7 +55,6 @@
 .public__signature {
   padding: 20px 0;
 }
-
 
 .svg-fill:hover {
   filter: invert(1) sepia(0.4) saturate(9) hue-rotate(175deg);

@@ -5,17 +5,34 @@ import '../styles/Button.css';
 import data from '../../data/data.json';
 import Icon from './Icon';
 
-const PublicPage = ({ name, profession, location, description, email }) => {
-  const { socials, photo } = data;
+const PublicPage = ({
+  name,
+  profession,
+  location,
+  description,
+  email,
+  twitterLink,
+  linkedInLink,
+  youTubeLink,
+  gitHubLink,
+}) => {
+  const { photo } = data;
+  const socials = {
+    linkedin: { id: 'linkedin', link: linkedInLink },
+    twitter: { id: 'twitter', link: twitterLink },
+    youtube: { id: 'youtube', link: youTubeLink },
+    github: { id: 'github', link: gitHubLink },
+  };
 
-  const socialList = socials.map((social) => {
-    return (
-      <li key={social.id}>
-        <a href={social.link} target="_blank" rel="noreferrer">
-          <Icon name={`${social.id}.svg`} />
-        </a>
-      </li>
-    );
+  const socialList = Object.values(socials).map((value) => {
+    if (value.link)
+      return (
+        <li key={value.id}>
+          <a href={value.link} target="_blank" rel="noreferrer">
+            <Icon name={`${value.id}.svg`} />
+          </a>
+        </li>
+      );
   });
 
   return (
