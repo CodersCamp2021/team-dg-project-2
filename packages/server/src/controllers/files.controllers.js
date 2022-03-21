@@ -15,9 +15,12 @@ const filesControllers = (router) => {
     res.status(200).send(file);
   });
 
-  // ! FILE UPLOAD
   // Use fileUpload middleware for methods below this line
-  router.use(fileUpload());
+  router.use(
+    fileUpload({
+      limits: { fileSize: 2 * 1024 * 1024 },
+    })
+  );
 
   // @desc upload file to server
   // @route POST /api/files
@@ -30,7 +33,12 @@ const filesControllers = (router) => {
 
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     const { sampleFile } = req.files;
-    const uploadPath = `${__dirname}/${sampleFile.name}`;
+    const uploadPath = `${__dirname}/../../public/${sampleFile.name}`;
+
+    // Check if file size is not exceeding 2mb
+    if (req.files.sampleFile.truncated) {
+      return res.send('File is too big.');
+    }
 
     // create info about the file in DB
     await File.create({
