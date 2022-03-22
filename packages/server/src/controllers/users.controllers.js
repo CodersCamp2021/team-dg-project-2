@@ -10,6 +10,21 @@ const usersControllers = (router) => {
   router.post(
     '/users',
     asyncHandler(async (req, res) => {
+      // This is passport and mongoose version - to be used later (maybe)
+      // User.findOne({ email: req.body.email }, async (err, doc) => {
+      //   if (err) throw err;
+      //   if (doc) res.status(StatusCodes.BAD_REQUEST).send('User already exists');
+      //   if (!doc) {
+      //     const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+      //     const newUser = new User({
+      //       email: req.body.email,
+      //       password: hashedPassword,
+      //     });
+      //     await newUser.save();
+      //     res.status(StatusCodes.CREATED).send('User Created');
+      //   }
+      // });
       const { email, password, slug } = req.body;
 
       if (!email || !password || !slug) {
@@ -53,6 +68,18 @@ const usersControllers = (router) => {
   router.post(
     '/users/login',
     asyncHandler(async (req, res) => {
+      // This is passport and mongoose version - to be used later (maybe)
+      // passport.authenticate('local', (err, user) => {
+      //   if (err) throw err;
+      //   if (!user) res.status(StatusCodes.BAD_REQUEST).send({ error: 'User does not exists' });
+      //   else {
+      //     req.logIn(user, (err) => {
+      //       if (err) throw err;
+      //       res.status(StatusCodes.ACCEPTED).send('succesfully authenticated');
+      //       console.log(req.user);
+      //     });
+      //   }
+      // });
       const { email, password } = req.body;
 
       // Check for user email

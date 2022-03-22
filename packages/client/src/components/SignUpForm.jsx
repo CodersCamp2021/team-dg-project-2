@@ -35,6 +35,7 @@ const SignUpForm = () => {
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
       reset();
+      alert('Sign up successful');
     }
   }, [formState, reset]);
 

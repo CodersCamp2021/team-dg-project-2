@@ -4,9 +4,11 @@ import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
 import helmet from 'helmet';
+import passport from 'passport';
 
 import env from './constants/env';
 import routes from './controllers';
+import passportConfig from './utils/passportConfig';
 
 const app = express();
 
@@ -36,6 +38,9 @@ app.use(
 );
 
 app.use(cookieParser('secretcode'));
+app.use(passport.initialize());
+app.use(passport.session());
+passportConfig(passport);
 
 // serving client files in production
 if (env.NODE_ENV === 'production') {

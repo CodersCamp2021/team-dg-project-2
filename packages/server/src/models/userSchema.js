@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
   },
   slug: {
     type: String,
-    required: [true, 'Please provide slug'],
+    required: [true, 'Please provide a slug'],
     unique: true,
   },
 });
