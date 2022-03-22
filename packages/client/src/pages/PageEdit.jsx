@@ -73,10 +73,10 @@ const PageEdit = () => {
 
   const onSubmit = (data) => {
     axios({
-      method: 'POST',
+      method: 'PUT',
       data,
       withCredentials: true,
-      url: 'http://localhost:4000/api/pages/testWithOblo',
+      url: 'http://localhost:4000/api/pages/jolelo',
     }).then((res) => {
       console.log(res);
     });
