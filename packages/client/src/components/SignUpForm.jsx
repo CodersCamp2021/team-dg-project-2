@@ -1,6 +1,7 @@
 import '../styles/Form.css';
 
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +9,9 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState,
+    formState: { errors, isSubmitSuccessful },
   } = useForm({
     defaultValues: {
       email: '',
@@ -28,6 +31,13 @@ const SignUpForm = () => {
       console.log(res);
     });
   };
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset();
+    }
+  }, [formState, reset]);
+
   return (
     <div className="form-content">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -82,7 +92,7 @@ const SignUpForm = () => {
             })}
             type="text"
             className="form-input"
-            placeholder="Enter your subdomain name"
+            placeholder="E.g thats.me/john-doe"
           />
           {errors.slug && <p>{errors.slug.message}</p>}
         </div>
