@@ -1,5 +1,6 @@
 import '../styles/Form.css';
 
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
@@ -7,17 +8,25 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    formState: errors,
+    formState: { errors },
   } = useForm({
     defaultValues: {
       email: '',
       password: '',
+      slug: '',
       agreement: true,
     },
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    axios({
+      method: 'POST',
+      data,
+      withCredentials: true,
+      url: 'http://localhost:4000/api/users',
+    }).then((res) => {
+      console.log(res);
+    });
   };
   return (
     <div className="form-content">
@@ -35,7 +44,7 @@ const SignUpForm = () => {
             className="form-input"
             placeholder="Enter your email address"
           />
-          {errors.email && <p>{errors.email.required}</p>}
+          {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="password" className="form-label">
@@ -59,6 +68,24 @@ const SignUpForm = () => {
           />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
+        <div className="form-inputs">
+          <label htmlFor="slug" className="form-label">
+            Subdomain
+          </label>
+          <input
+            {...register('slug', {
+              required: 'Subdomain name required',
+              pattern: {
+                value: /^\S*$/,
+                message: 'No space allowed',
+              },
+            })}
+            type="text"
+            className="form-input"
+            placeholder="Enter your subdomain name"
+          />
+          {errors.slug && <p>{errors.slug.message}</p>}
+        </div>
         <div className="policy-components">
           <div className="checkbox-form">
             <input
@@ -69,7 +96,7 @@ const SignUpForm = () => {
               id="agree-policy"
               className="checkbox"
             />
-            {errors.agreement && <p>{errors.agreement}</p>}
+            {errors.agreement && <p>{errors.agreement.message}</p>}
             <label htmlFor="agree-policy" className="checkbox-label">
               I agree <a href="#">Privacy Policy,</a> and <a href="#">Cookie Policy</a>
             </label>
