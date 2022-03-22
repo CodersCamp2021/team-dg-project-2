@@ -1,4 +1,5 @@
 import compression from 'compression';
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 
@@ -15,6 +16,14 @@ app.use(express.json());
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
+
+// allow cors for react app
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
 
 // serving client files in production
 if (env.NODE_ENV === 'production') {
