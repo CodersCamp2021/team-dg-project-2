@@ -6,9 +6,7 @@ import logo from '../../public/logo.svg';
 
 const NavBar = () => {
   const Logout = () => {
-    {
-      window.location.pathname = '/log-in';
-    }
+    window.location.pathname = '/log-in';
   };
 
   return (
