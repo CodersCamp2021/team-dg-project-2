@@ -1,5 +1,8 @@
 import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import express from 'express';
+import session from 'express-session';
 import helmet from 'helmet';
 
 import env from './constants/env';
@@ -15,6 +18,24 @@ app.use(express.json());
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
+
+// allow cors for react app
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
+// session middleware
+app.use(
+  session({
+    secret: 'secretcode',
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+app.use(cookieParser('secretcode'));
 
 // serving client files in production
 if (env.NODE_ENV === 'production') {
