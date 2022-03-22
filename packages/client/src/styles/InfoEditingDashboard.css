@@ -153,14 +153,14 @@
   justify-content: end;
   background-color: transparent;
   margin-left: 0;
-  width: 41rem;
-  padding: 0.75rem 1rem;
+  width: 100%;
+  padding: 0.75rem 0;
   position: sticky;
   bottom: 0;
 }
 
 .dashboard__content__button-save-changes {
-  margin-right: 10%;
+  /* margin-right: 10%; */
   padding: 0.75rem 3rem;
   margin-top: 0.5rem;
   font-weight: 600;
