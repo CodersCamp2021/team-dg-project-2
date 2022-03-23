@@ -1,53 +1,77 @@
 import '../styles/Form.css';
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 
-function LoginForm({ Login, error }) {
-  const [details, setDetails] = useState({ email: '', password: '' });
+import { useAuth } from '../utils/auth';
 
-  const submitHandler = (e) => {
-    e.preventDefault();
+const LoginForm = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState,
+    formState: { errors, isSubmitSuccessful },
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+      remember: '',
+    },
+  });
 
-    Login(details);
+  const onSubmit = (data) => {
+    axios({
+      method: 'POST',
+      data,
+      withCredentials: true,
+      url: 'http://localhost:4000/api/users/login',
+    }).then((res) => {
+      console.log(res);
+      console.log(res.data.email);
+      auth.login(res.data.email);
+      navigate('/editor-mode');
+    });
   };
 
   return (
     <div className="form-content">
-      <form className="form" onSubmit={submitHandler}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Log in</h1>
-        <div className="details-error">{error !== '' ? <div>{error}</div> : ''}</div>
         <div className="form-inputs">
           <label htmlFor="email" className="form-label">
             Email
           </label>
           <input
+            {...register('email', {
+              required: 'Email required',
+            })}
             type="email"
-            name="email"
-            id="email"
             className="form-input"
             placeholder="Enter your email addres"
-            onChange={(e) => setDetails({ ...details, email: e.target.value })}
-            value={details.email}
           />
+          {errors.email && <p>{errors.email.message}</p>}
         </div>
         <div className="form-inputs">
           <label htmlFor="password" className="form-label">
             Password
           </label>
           <input
+            {...register('password', {
+              required: 'Password required',
+            })}
             type="password"
-            name="password"
-            id="password"
             className="form-input"
             placeholder="Enter your password"
-            onChange={(e) => setDetails({ ...details, password: e.target.value })}
-            value={details.password}
           />
+          {errors.password && <p>{errors.password.message}</p>}
         </div>
         <div className="password-components">
           <div className="checkbox-form">
-            <input type="checkbox" id="remember-me" name="remember-me" className="checkbox" />
+            <input {...register('remember')} type="checkbox" className="checkbox" />
             <label htmlFor="remember-me" className="checkbox-label-login">
               Remember me
             </label>
@@ -63,6 +87,6 @@ function LoginForm({ Login, error }) {
       </span>
     </div>
   );
-}
+};
 
 export default LoginForm;

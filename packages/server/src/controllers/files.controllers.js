@@ -1,7 +1,8 @@
+import fileUpload from 'express-fileupload';
+import fs from 'fs';
 import { StatusCodes } from 'http-status-codes';
 
-const fileUpload = require('express-fileupload');
-const File = require('../models/fileSchema');
+import File from '../models/fileSchema';
 
 const filesControllers = (router) => {
   // @desc Get file by name
@@ -12,7 +13,7 @@ const filesControllers = (router) => {
       name: _req.body.name,
     });
 
-    res.status(200).send(file);
+    res.status(StatusCodes.OK).send(file);
   });
 
   // Use fileUpload middleware for methods below this line
@@ -28,12 +29,22 @@ const filesControllers = (router) => {
   router.post('/files', async function (req, res) {
     // check if file was attached to the form
     if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send('No files were uploaded.');
+      return res.status(StatusCodes.BAD_REQUEST).send('No files were uploaded.');
+    }
+
+    const publicFolder = `${__dirname}/../../public`;
+
+    try {
+      if (!fs.existsSync(publicFolder)) {
+        fs.mkdirSync(publicFolder);
+      }
+    } catch (err) {
+      console.error(err);
     }
 
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     const { sampleFile } = req.files;
-    const uploadPath = `${__dirname}/../../public/${sampleFile.name}`;
+    const uploadPath = `${publicFolder}/${sampleFile.name}`;
 
     // Check if file size is not exceeding 2mb
     if (req.files.sampleFile.truncated) {
@@ -48,7 +59,7 @@ const filesControllers = (router) => {
 
     // mv() let us place the file somewhere on server
     sampleFile.mv(uploadPath, function (err) {
-      if (err) return res.status(500).send(err);
+      if (err) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(err);
 
       res.send('File uploaded!');
     });

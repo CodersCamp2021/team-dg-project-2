@@ -12,9 +12,11 @@ const userSchema = mongoose.Schema({
   },
   slug: {
     type: String,
-    required: [true, 'Please provide slug'],
+    required: [true, 'Please provide a slug'],
     unique: true,
   },
 });
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+
+export default User;
