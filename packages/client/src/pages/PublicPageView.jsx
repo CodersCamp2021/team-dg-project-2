@@ -12,9 +12,8 @@ const PublicPageView = () => {
       .then((response) => {
         const fetchedUserData = response.data;
         setUserData(fetchedUserData);
-        console.log(`Data has been received`);
       })
-      .catch((err) => {
+      .catch(() => {
         setUserData({
           name: 'Something went wrong',
           profession: "We're sorry",
