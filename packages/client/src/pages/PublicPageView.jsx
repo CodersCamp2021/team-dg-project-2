@@ -1,14 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import PublicPage from '../components/PublicPage';
 
 const PublicPageView = () => {
   const [userData, setUserData] = useState('');
+  const { id } = useParams();
 
   const getUserData = () => {
     axios
-      .get('http://localhost:4000/api/pages/jolelo') // ! we'll need to change end of this link to slug from GET /public/:slug request
+      .get(`http://localhost:4000/api/pages/${id}`)
       .then((response) => {
         const fetchedUserData = response.data;
         setUserData(fetchedUserData);
