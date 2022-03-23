@@ -3,9 +3,10 @@ import '../styles/Form.css';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,6 +30,7 @@ const SignUpForm = () => {
       url: 'http://localhost:4000/api/users',
     }).then((res) => {
       console.log(res);
+      navigate('/log-in');
     });
   };
 
