@@ -2,6 +2,7 @@
 import '../styles/InfoEditingDashboard.css';
 import '../styles/TestBuild.css';
 
+import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -70,6 +71,17 @@ const PageEdit = () => {
     },
   });
 
+  const onSubmit = (data) => {
+    axios({
+      method: 'PUT',
+      data,
+      withCredentials: true,
+      url: 'http://localhost:4000/api/pages/jolelo',
+    }).then((res) => {
+      console.log(res);
+    });
+  };
+
   return (
     <div className="flex-horizontal">
       <div className="visible">
@@ -91,11 +103,7 @@ const PageEdit = () => {
             </p>
             <h5 className="dashboard__content__h5 dashboard__content__h5--section-divider">Personal data</h5>
             <p className="dashboard__content__p dashboard__content__p--input-names margin-top-0">Name</p>
-            <form
-              onSubmit={handleSubmit((data) => {
-                console.log(data);
-              })}
-            >
+            <form onSubmit={handleSubmit(onSubmit)}>
               <input
                 {...register('name', {
                   required: 'Please provide Your name',
