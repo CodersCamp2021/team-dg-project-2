@@ -1,11 +1,14 @@
 import '../styles/Form.css';
 
 import axios from 'axios';
-import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../utils/auth';
 
 const LoginForm = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -28,6 +31,9 @@ const LoginForm = () => {
       url: 'http://localhost:4000/api/users/login',
     }).then((res) => {
       console.log(res);
+      console.log(res.data.email);
+      auth.login(res.data.email);
+      navigate('/editor-mode');
     });
   };
 
