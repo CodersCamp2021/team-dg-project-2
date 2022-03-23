@@ -1,11 +1,12 @@
 import '../styles/Form.css';
 
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const [currentSlugInput, setCurrentSlugInput] = useState('');
   const navigate = useNavigate();
   const {
     register,
@@ -81,7 +82,7 @@ const SignUpForm = () => {
           />
           {errors.password && <p>{errors.password.message}</p>}
         </div>
-        <div className="form-inputs">
+        <div className="form-inputs no-margin-bottom">
           <label htmlFor="slug" className="form-label">
             Subdomain
           </label>
@@ -95,10 +96,13 @@ const SignUpForm = () => {
             })}
             type="text"
             className="form-input"
-            placeholder="E.g thats.me/john-doe"
+            placeholder="Enter your subdomain"
+            // value={currentSlugInput}
+            onChange={(e) => setCurrentSlugInput(e.target.value)}
           />
           {errors.slug && <p>{errors.slug.message}</p>}
         </div>
+        <p className="slug-info">Your page will be accessible under: thats.me/{currentSlugInput}</p>
         <div className="policy-components">
           <div className="checkbox-form">
             <input
