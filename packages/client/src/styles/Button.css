@@ -22,3 +22,8 @@
 .contact-me:active {
   background-color: var(--bg-btn-active);
 }
+
+.btn-logout {
+  padding: 4px 24px;
+  font-weight: 400;
+}
