@@ -7,7 +7,10 @@ const fileSchema = mongoose.Schema({
   },
   name: {
     type: String,
-    required: [true, 'Please provide photo only'],
+    required: [true, 'Please file with a name'],
+  },
+  uploadSrc: {
+    type: String,
   },
 });
 

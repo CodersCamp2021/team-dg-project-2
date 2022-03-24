@@ -29,6 +29,10 @@ app.use(
   })
 );
 
+// TODO change cors origin to array consisting of these links (after testing everything and making sure it works flawlessly!)
+// https://thatsme-api-docs.netlify.app/
+// https://thatsme.netlify.app/
+
 // session middleware
 app.use(
   session({

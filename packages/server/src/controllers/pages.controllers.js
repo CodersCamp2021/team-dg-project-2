@@ -30,7 +30,7 @@ const pagesControllers = (router) => {
       const slugExists = await UserData.findOne({ slug });
 
       if (!slugExists) {
-        await UserData.create({
+        const UserInfo = await UserData.create({
           slug,
           name,
           profession,
@@ -44,8 +44,8 @@ const pagesControllers = (router) => {
         });
 
         res.status(StatusCodes.CREATED).send({
-          message: `User with slug: "${slug}" created`,
-          slug,
+          message: `User with slug: '${slug}' created`,
+          UserInfo,
         });
         return;
       }
@@ -53,52 +53,7 @@ const pagesControllers = (router) => {
       //  Check if info of user with that slug exist
       const updatedUserInfo = await UserData.findOneAndUpdate({ slug: req.params.slug }, req.body, { new: true });
 
-      res.send({ message: `this is your updated info: ${updatedUserInfo}` });
-    })
-  );
-
-  // @desc post user info for public page display
-  // @route POST /api/pages/:slug
-  // @access Private
-  router.post(
-    '/pages/:slug',
-    asyncHandler(async (req, res) => {
-      const { name, profession, location, description, email, twitterLink, linkedInLink, youTubeLink, gitHubLink } =
-        req.body;
-
-      const { slug } = req.params;
-
-      //  Check if info of user with that slug exist
-      const userExists = await UserData.findOne({ slug });
-
-      if (userExists) {
-        res.status(StatusCodes.BAD_REQUEST).send({ error: 'this domain is taken' });
-        return;
-      }
-
-      // Upload user info to the server
-      const userData = await UserData.create({
-        slug,
-        name,
-        profession,
-        location,
-        description,
-        email,
-        twitterLink,
-        linkedInLink,
-        youTubeLink,
-        gitHubLink,
-      });
-
-      if (userData) {
-        res.status(StatusCodes.CREATED).send({
-          slug: userData.slug,
-          _id: userData.id,
-          name: userData.name,
-        });
-      } else {
-        res.status(StatusCodes.BAD_REQUEST).send({ error: 'There was a problem, try again later' });
-      }
+      res.status(StatusCodes.OK).send({ message: `Below is your updated info`, updatedUserInfo });
     })
   );
 };
