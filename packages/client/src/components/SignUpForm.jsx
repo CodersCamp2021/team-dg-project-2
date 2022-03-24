@@ -1,11 +1,12 @@
 import '../styles/Form.css';
 
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const [message, setMessage] = useState('');
   const [currentSlugInput, setCurrentSlugInput] = useState('');
   const navigate = useNavigate();
   const {
@@ -13,7 +14,7 @@ const SignUpForm = () => {
     handleSubmit,
     reset,
     formState,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       email: '',
@@ -29,24 +30,24 @@ const SignUpForm = () => {
       data,
       withCredentials: true,
       url: 'http://localhost:4000/api/users',
-    }).then((res) => {
-      console.log(res);
-      navigate('/log-in');
-    });
+    })
+      .then((res) => {
+        reset();
+        navigate('/log-in');
+      })
+      .catch((err) => {
+        if (err.response) {
+          setMessage(err.response.data.error);
+        }
+      });
   };
-
-  useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset();
-      alert('Sign up successful');
-    }
-  }, [formState, reset]);
 
   return (
     <div className="form-content">
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Sign up</h1>
         <div className="form-inputs">
+          <span className="message-error">{message}</span>
           <label htmlFor="email" className="form-label">
             Email
           </label>

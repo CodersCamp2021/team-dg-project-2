@@ -38,7 +38,14 @@
   font-size: var(--font-sizeLabel2);
 }
 
-.login-error {
+.message-success {
+  color: var(--color-success);
+  margin: 0;
+  font-size: var(--font-sizeBody1);
+  text-align: center;
+}
+
+.message-error {
   color: var(--color-error);
   margin: 0;
   font-size: var(--font-sizeBody1);

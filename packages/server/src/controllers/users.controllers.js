@@ -1,31 +1,25 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from 'express-async-handler';
 import { StatusCodes } from 'http-status-codes';
+import jwt from 'jsonwebtoken';
 
 import User from '../models/userSchema';
+import protect from '../utils/authMiddleware';
 
 const usersControllers = (router) => {
+  // Generate JWT
+  const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+      expiresIn: '24h',
+    });
+  };
+
   // @desc Register user
   // @route POST /api/users
   // @access Public
   router.post(
     '/users',
     asyncHandler(async (req, res) => {
-      // This is passport and mongoose version - to be used later (maybe)
-      // User.findOne({ email: req.body.email }, async (err, doc) => {
-      //   if (err) throw err;
-      //   if (doc) res.status(StatusCodes.BAD_REQUEST).send('User already exists');
-      //   if (!doc) {
-      //     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-      //     const newUser = new User({
-      //       email: req.body.email,
-      //       password: hashedPassword,
-      //     });
-      //     await newUser.save();
-      //     res.status(StatusCodes.CREATED).send('User Created');
-      //   }
-      // });
       const { email, password, slug } = req.body;
 
       if (!email || !password || !slug) {
@@ -34,9 +28,10 @@ const usersControllers = (router) => {
 
       //  Check if user exist
       const userExists = await User.findOne({ email });
+      const slugExists = await User.findOne({ slug });
 
-      if (userExists) {
-        res.status(StatusCodes.BAD_REQUEST).send({ error: 'user already exists' });
+      if (userExists || slugExists) {
+        res.status(StatusCodes.BAD_REQUEST).send({ error: 'user or subdomain already exists' });
       }
 
       //  Hash password
@@ -51,38 +46,23 @@ const usersControllers = (router) => {
       });
 
       if (user) {
-        res.status(StatusCodes.CREATED).send({
+        res.status(StatusCodes.CREATED).json({
           _id: user.id,
           email: user.email,
-          password: hashedPassword,
           slug: user.slug,
+          token: generateToken(user._id),
         });
       } else {
         res.status(StatusCodes.BAD_REQUEST).send({ error: 'invalid user data' });
       }
-      // This code leads to error, so I am commenting it out
-      // res.json({ message: 'register user' });
     })
   );
 
   // @desc Login user
   // @route POST /api/users/login
-  // @access Public
   router.post(
     '/users/login',
     asyncHandler(async (req, res) => {
-      // This is passport and mongoose version - to be used later (maybe)
-      // passport.authenticate('local', (err, user) => {
-      //   if (err) throw err;
-      //   if (!user) res.status(StatusCodes.BAD_REQUEST).send({ error: 'User does not exists' });
-      //   else {
-      //     req.logIn(user, (err) => {
-      //       if (err) throw err;
-      //       res.status(StatusCodes.ACCEPTED).send('succesfully authenticated');
-      //       console.log(req.user);
-      //     });
-      //   }
-      // });
       const { email, password } = req.body;
 
       // Check for user email
@@ -90,13 +70,26 @@ const usersControllers = (router) => {
 
       if (user && (await bcrypt.compare(password, user.password))) {
         res.json({
-          _id: user.id,
-          email: user.email,
-          // TODO - add token: TOKEN
+          id: user.id,
+          token: generateToken(user._id),
         });
       } else {
         res.status(StatusCodes.BAD_REQUEST).send({ error: 'Invalid credentials' });
       }
+    })
+  );
+
+  router.get(
+    '/users/logout',
+    protect,
+    asyncHandler(async (req, res) => {
+      const { _id, email, slug } = await User.findById(req.user.id);
+
+      res.status(StatusCodes.SUCCESS).json({
+        id: _id,
+        email,
+        slug,
+      });
     })
   );
 
