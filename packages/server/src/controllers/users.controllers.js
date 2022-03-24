@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import asyncHandler from 'express-async-handler';
 import { StatusCodes } from 'http-status-codes';
+import jwt from 'jsonwebtoken';
 
 import User from '../models/userSchema';
 
@@ -11,21 +12,6 @@ const usersControllers = (router) => {
   router.post(
     '/users',
     asyncHandler(async (req, res) => {
-      // This is passport and mongoose version - to be used later (maybe)
-      // User.findOne({ email: req.body.email }, async (err, doc) => {
-      //   if (err) throw err;
-      //   if (doc) res.status(StatusCodes.BAD_REQUEST).send('User already exists');
-      //   if (!doc) {
-      //     const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
-      //     const newUser = new User({
-      //       email: req.body.email,
-      //       password: hashedPassword,
-      //     });
-      //     await newUser.save();
-      //     res.status(StatusCodes.CREATED).send('User Created');
-      //   }
-      // });
       const { email, password, slug } = req.body;
 
       if (!email || !password || !slug) {
@@ -34,9 +20,10 @@ const usersControllers = (router) => {
 
       //  Check if user exist
       const userExists = await User.findOne({ email });
+      const slugExists = await User.findOne({ slug });
 
-      if (userExists) {
-        res.status(StatusCodes.BAD_REQUEST).send({ error: 'user already exists' });
+      if (userExists || slugExists) {
+        res.status(StatusCodes.BAD_REQUEST).send({ error: 'user or subdomain already exists' });
       }
 
       //  Hash password
@@ -45,18 +32,14 @@ const usersControllers = (router) => {
 
       // Create user
       const user = await User.create({
+        id: Object.id,
         email,
         password: hashedPassword,
         slug,
       });
 
       if (user) {
-        res.status(StatusCodes.CREATED).send({
-          _id: user.id,
-          email: user.email,
-          password: hashedPassword,
-          slug: user.slug,
-        });
+        res.status(StatusCodes.CREATED).send('User created successfully');
       } else {
         res.status(StatusCodes.BAD_REQUEST).send({ error: 'invalid user data' });
       }
@@ -67,22 +50,9 @@ const usersControllers = (router) => {
 
   // @desc Login user
   // @route POST /api/users/login
-  // @access Public
   router.post(
     '/users/login',
     asyncHandler(async (req, res) => {
-      // This is passport and mongoose version - to be used later (maybe)
-      // passport.authenticate('local', (err, user) => {
-      //   if (err) throw err;
-      //   if (!user) res.status(StatusCodes.BAD_REQUEST).send({ error: 'User does not exists' });
-      //   else {
-      //     req.logIn(user, (err) => {
-      //       if (err) throw err;
-      //       res.status(StatusCodes.ACCEPTED).send('succesfully authenticated');
-      //       console.log(req.user);
-      //     });
-      //   }
-      // });
       const { email, password } = req.body;
 
       // Check for user email
@@ -90,7 +60,7 @@ const usersControllers = (router) => {
 
       if (user && (await bcrypt.compare(password, user.password))) {
         res.json({
-          _id: user.id,
+          id: user.id,
           email: user.email,
           // TODO - add token: TOKEN
         });
@@ -98,6 +68,11 @@ const usersControllers = (router) => {
         res.status(StatusCodes.BAD_REQUEST).send({ error: 'Invalid credentials' });
       }
     })
+  );
+
+  router.get(
+    '/users/logout',
+    asyncHandler(async (req, res) => {})
   );
 
   // @desc update user account info

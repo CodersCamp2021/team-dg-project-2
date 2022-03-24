@@ -1,9 +1,10 @@
 import '../styles/Form.css';
 
 import axios from 'axios';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+
 import { useAuth } from '../utils/auth';
 
 const LoginForm = () => {
@@ -15,7 +16,7 @@ const LoginForm = () => {
     handleSubmit,
     reset,
     formState,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors },
   } = useForm({
     defaultValues: {
       email: '',
@@ -33,7 +34,6 @@ const LoginForm = () => {
     })
       .then((res) => {
         console.log(res);
-        console.log(res.data.email);
         auth.login(res.data.email);
         navigate('/editor-mode');
       })
@@ -49,7 +49,7 @@ const LoginForm = () => {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Log in</h1>
         <div className="form-inputs">
-          <span className="login-error">{error}</span>
+          <span className="message-error">{error}</span>
           <label htmlFor="email" className="form-label">
             Email
           </label>
