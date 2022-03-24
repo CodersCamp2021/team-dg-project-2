@@ -6,17 +6,6 @@ import { StatusCodes } from 'http-status-codes';
 import File from '../models/fileSchema';
 
 const filesControllers = (router) => {
-  // @desc Get file by name
-  // @route GET /api/files
-  // @access Public
-  router.get('/files', async (_req, res) => {
-    const file = await File.find({
-      name: _req.body.name,
-    });
-
-    res.status(StatusCodes.OK).send(file);
-  });
-
   // Use fileUpload middleware for methods below this line
   router.use(
     fileUpload({
