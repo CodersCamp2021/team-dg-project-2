@@ -4,8 +4,16 @@ import { StatusCodes } from 'http-status-codes';
 import jwt from 'jsonwebtoken';
 
 import User from '../models/userSchema';
+import protect from '../utils/authMiddleware';
 
 const usersControllers = (router) => {
+  // Generate JWT
+  const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+      expiresIn: '24h',
+    });
+  };
+
   // @desc Register user
   // @route POST /api/users
   // @access Public
@@ -32,19 +40,21 @@ const usersControllers = (router) => {
 
       // Create user
       const user = await User.create({
-        id: Object.id,
         email,
         password: hashedPassword,
         slug,
       });
 
       if (user) {
-        res.status(StatusCodes.CREATED).send('User created successfully');
+        res.status(StatusCodes.CREATED).json({
+          _id: user.id,
+          email: user.email,
+          slug: user.slug,
+          token: generateToken(user._id),
+        });
       } else {
         res.status(StatusCodes.BAD_REQUEST).send({ error: 'invalid user data' });
       }
-      // This code leads to error, so I am commenting it out
-      // res.json({ message: 'register user' });
     })
   );
 
@@ -61,8 +71,7 @@ const usersControllers = (router) => {
       if (user && (await bcrypt.compare(password, user.password))) {
         res.json({
           id: user.id,
-          email: user.email,
-          // TODO - add token: TOKEN
+          token: generateToken(user._id),
         });
       } else {
         res.status(StatusCodes.BAD_REQUEST).send({ error: 'Invalid credentials' });
@@ -72,7 +81,16 @@ const usersControllers = (router) => {
 
   router.get(
     '/users/logout',
-    asyncHandler(async (req, res) => {})
+    protect,
+    asyncHandler(async (req, res) => {
+      const { _id, email, slug } = await User.findById(req.user.id);
+
+      res.status(StatusCodes.SUCCESS).json({
+        id: _id,
+        email,
+        slug,
+      });
+    })
   );
 
   // @desc update user account info

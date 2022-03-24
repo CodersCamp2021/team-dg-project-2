@@ -34,7 +34,7 @@ const LoginForm = () => {
     })
       .then((res) => {
         console.log(res);
-        auth.login(res.data.email);
+        auth.login(res.data.token);
         navigate('/editor-mode');
       })
       .catch((err) => {

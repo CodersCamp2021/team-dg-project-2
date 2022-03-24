@@ -34,7 +34,6 @@ const NavBar = () => {
         </div>
       ) : (
         <div className="nav-links">
-          <h4>{auth.user}</h4>
           <button className="btn btn-logout" onClick={handleLogout}>
             Logout
           </button>

@@ -33,7 +33,6 @@ const SignUpForm = () => {
     })
       .then((res) => {
         reset();
-        alert(res.data);
         navigate('/log-in');
       })
       .catch((err) => {
