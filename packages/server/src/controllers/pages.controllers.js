@@ -53,7 +53,7 @@ const pagesControllers = (router) => {
       //  Check if info of user with that slug exist
       const updatedUserInfo = await UserData.findOneAndUpdate({ slug: req.params.slug }, req.body, { new: true });
 
-      res.send({ message: `Below is your updated info`, updatedUserInfo });
+      res.status(StatusCodes.OK).send({ message: `Below is your updated info`, updatedUserInfo });
     })
   );
 };
