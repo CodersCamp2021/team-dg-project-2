@@ -21,10 +21,16 @@ app.use(express.json());
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
 
+const allowedCorsOrigins = [
+  'http://localhost:3000',
+  'https://thatsme-api-docs.netlify.app/',
+  'https://thatsme.netlify.app/',
+];
+
 // allow cors for react app
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: allowedCorsOrigins,
     credentials: true,
   })
 );
