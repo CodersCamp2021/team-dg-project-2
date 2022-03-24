@@ -37,6 +37,13 @@
   font-size: var(--font-sizeLabel2);
 }
 
+.login-error {
+  color: var(--color-error);
+  margin: 0;
+  font-size: var(--font-sizeBody1);
+  text-align: center;
+}
+
 .form-label {
   font-size: var(--font-sizeLabel1);
   color: var(--color-black600);

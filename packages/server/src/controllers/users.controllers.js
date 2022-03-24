@@ -91,7 +91,7 @@ const usersControllers = (router) => {
           email: user.email,
         });
       } else {
-        res.status(StatusCodes.BAD_REQUEST).send({ error: 'invalid credentials' });
+        res.status(StatusCodes.BAD_REQUEST).send({ error: 'Invalid credentials' });
       }
     })
   );

@@ -3,10 +3,11 @@ import '../styles/Form.css';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 import { useAuth } from '../utils/auth';
 
 const LoginForm = () => {
+  const [error, setError] = useState('');
   const auth = useAuth();
   const navigate = useNavigate();
   const {
@@ -29,12 +30,18 @@ const LoginForm = () => {
       data,
       withCredentials: true,
       url: 'http://localhost:4000/api/users/login',
-    }).then((res) => {
-      console.log(res);
-      console.log(res.data.email);
-      auth.login(res.data.email);
-      navigate('/editor-mode');
-    });
+    })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.email);
+        auth.login(res.data.email);
+        navigate('/editor-mode');
+      })
+      .catch((err) => {
+        if (err.response) {
+          setError(err.response.data.error);
+        }
+      });
   };
 
   return (
@@ -42,6 +49,7 @@ const LoginForm = () => {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1>Log in</h1>
         <div className="form-inputs">
+          <span className="login-error">{error}</span>
           <label htmlFor="email" className="form-label">
             Email
           </label>
